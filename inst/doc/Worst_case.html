@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Worst case time complexity}
+-->
+
+<p>The time complexity of the algorithm depends on the number of
+intervals (candidate changepoints stored). Here we compute the
+mean number of intervals for real Mono27ac data, and synthetic
+count data which are always increasing.</p>
+
+<pre><code class="r">data(Mono27ac, package=&quot;PeakSegDisk&quot;, envir=environment())
+library(data.table)
+loss.list &lt;- list()
+N.data.vec &lt;- 10^seq(1, 3)
+for(penalty in c(0, 1e2, 1e4, 1e6)){
+  for(N.data in N.data.vec){
+    some.cov &lt;- Mono27ac$coverage[1:N.data]
+    some.inc &lt;- data.table(some.cov)
+    some.inc[, count := 1:.N]
+    data.list &lt;- list(
+      real=some.cov,
+      synthetic=some.inc)
+    for(short.type in names(data.list)){
+      df &lt;- data.list[[short.type]]
+      fit &lt;- PeakSegDisk::PeakSegFPOP_df(df, penalty)
+      loss.list[[paste(penalty, N.data, short.type)]] &lt;- data.table(
+        N.data,
+        short.type,
+        fit$loss)
+    }
+  }
+}
+(loss &lt;- do.call(rbind, loss.list))[, .(
+  penalty, short.type, N.data, 
+  mean.intervals, max.intervals,
+  megabytes, seconds)][order(penalty, short.type, N.data)]
+#&gt;     penalty short.type N.data mean.intervals max.intervals    megabytes seconds
+#&gt;  1:       0       real     10         0.9500             1 0.0008850098    0.01
+#&gt;  2:       0       real    100         1.8250             4 0.0122909546    0.01
+#&gt;  3:       0       real   1000         2.8325             5 0.1614456177    0.05
+#&gt;  4:       0  synthetic     10         2.3000             3 0.0013999939    0.02
+#&gt;  5:       0  synthetic    100         2.8200             5 0.0160865784    0.02
+#&gt;  6:       0  synthetic   1000         2.9920             5 0.1675300598    0.05
+#&gt;  7:     100       real     10         1.0500             3 0.0009231567    0.00
+#&gt;  8:     100       real    100         3.1350             8 0.0172882080    0.01
+#&gt;  9:     100       real   1000        10.9590            30 0.4714469910    0.06
+#&gt; 10:     100  synthetic     10         3.3000             7 0.0017814636    0.00
+#&gt; 11:     100  synthetic    100         8.5050            17 0.0377731323    0.01
+#&gt; 12:     100  synthetic   1000        54.5855           108 2.1356658936    0.11
+#&gt; 13:   10000       real     10         3.1000             5 0.0017051697    0.02
+#&gt; 14:   10000       real    100         7.5750            12 0.0342254639    0.02
+#&gt; 15:   10000       real   1000        11.9290            31 0.5084495544    0.07
+#&gt; 16:   10000  synthetic     10         3.8000             6 0.0019721985    0.01
+#&gt; 17:   10000  synthetic    100        20.7450            39 0.0844650269    0.01
+#&gt; 18:   10000  synthetic   1000       151.7575           315 5.8424835205    0.21
+#&gt; 19: 1000000       real     10         1.8500             4 0.0012283325    0.00
+#&gt; 20: 1000000       real    100         4.5000            11 0.0224952698    0.00
+#&gt; 21: 1000000       real   1000        13.2370            19 0.5583457947    0.07
+#&gt; 22: 1000000  synthetic     10         2.0000             4 0.0012855530    0.00
+#&gt; 23: 1000000  synthetic    100        21.4600            29 0.0871925354    0.02
+#&gt; 24: 1000000  synthetic   1000       192.2360           289 7.3866157532    0.28
+#&gt;     penalty short.type N.data mean.intervals max.intervals    megabytes seconds
+</code></pre>
+
+<p>Theoretically the most intervals that could be stored is \(O(i)\) for
+each data point \(i\in\{1, &hellip;, N\}\). Therefore the largest total
+number of intervals is <code>sum(1:N)</code>, which can also be computed by
+<code>N*(N+1)/2</code>. The largest mean is <code>mean(1:N)</code>, which can be computed
+via <code>sum(1:N)/N</code> = <code>(N+1)/2</code>.</p>
+
+<pre><code class="r">(worst.dt &lt;- data.table(
+  N.data=N.data.vec,
+  mean.intervals=(N.data.vec+1)/2,
+  short.type=&quot;theoretical&quot;))
+#&gt;    N.data mean.intervals  short.type
+#&gt; 1:     10            5.5 theoretical
+#&gt; 2:    100           50.5 theoretical
+#&gt; 3:   1000          500.5 theoretical
+</code></pre>
+
+<p>The plot below shows that the algorithm achieves the theoretical
+worst case time complexity for the synthetic increasing data,
+when the penalty is large. But the number of intervals is always
+much smaller for real Mono27ac ChIP-seq data.</p>
+
+<pre><code class="r">library(ggplot2)
+one &lt;- function(short.type, data.type, color){
+  data.table(short.type, data.type, color)
+}
+type.dt &lt;- rbind(
+  one(&quot;theoretical&quot;, &quot;Theoretical\nworst case&quot;, &quot;grey&quot;),
+  one(&quot;synthetic&quot;, &quot;Synthetic\nIncreasing&quot;, &quot;red&quot;),
+  one(&quot;real&quot;, &quot;Real ChIP-seq&quot;, &quot;black&quot;))
+loss.types &lt;- type.dt[loss, on=list(short.type)]
+worst.types &lt;- type.dt[worst.dt, on=list(short.type)]
+(type.colors &lt;- type.dt[, structure(color, names=data.type)])
+#&gt; Theoretical\nworst case   Synthetic\nIncreasing           Real ChIP-seq 
+#&gt;                  &quot;grey&quot;                   &quot;red&quot;                 &quot;black&quot;
+ggplot()+
+  guides(
+    color=guide_legend(keyheight=3)
+  )+
+  geom_blank(aes(
+    N.data, 1),
+    data=data.table(N.data=c(5, 2000)))+
+  theme_bw()+
+  theme(panel.spacing=grid::unit(0, &quot;lines&quot;))+
+  facet_grid(. ~ penalty, labeller=label_both)+
+  geom_line(aes(
+    N.data, mean.intervals, color=data.type),
+    data=worst.types)+
+  scale_color_manual(
+    values=type.colors,
+    breaks=names(type.colors))+
+  geom_line(aes(
+    bedGraph.lines, mean.intervals, color=data.type),
+    data=loss.types)+
+  scale_x_log10(&quot;N data&quot;)+
+  scale_y_log10(&quot;Mean intervals (candidate changepoints)&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-3"/></p>
+
+</body>
+
+</html>
