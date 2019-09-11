@@ -1,6 +1,6 @@
 \name{fread.first}
 \alias{fread.first}
-\title{Quickly read first line }
+\title{Quickly read first line}
 \description{Read the first line of a text file. Useful for quickly checking if
 the coverage.bedGraph_penalty=VALUE_segments.bed file is
 consistent with the coverage.bedGraph_penalty=VALUE_loss.tsv
@@ -31,7 +31,7 @@ four <- rbind(
   r("chr1", 30, 40, 13))
 write.table(
   four, tmp <- tempfile(),
-  sep="\t", row.names=FALSE, col.names=FALSE)
+  sep="\\t", row.names=FALSE, col.names=FALSE)
 pstr <- "10.5"
 PeakSegFPOP_file(tmp, pstr)
 

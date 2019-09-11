@@ -1,6 +1,6 @@
 \name{fread.last}
 \alias{fread.last}
-\title{Quickly read last line }
+\title{Quickly read last line}
 \description{Read the last line of a text file. Useful for quickly checking if
 the coverage.bedGraph_penalty=VALUE_segments.bed file is
 consistent with the coverage.bedGraph_penalty=VALUE_loss.tsv
@@ -31,7 +31,7 @@ four <- rbind(
   r("chr1", 30, 40, 13))
 write.table(
   four, tmp <- tempfile(),
-  sep="\t", row.names=FALSE, col.names=FALSE)
+  sep="\\t", row.names=FALSE, col.names=FALSE)
 pstr <- "10.5"
 PeakSegFPOP_file(tmp, pstr)
 
