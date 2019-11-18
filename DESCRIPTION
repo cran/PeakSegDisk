@@ -1,7 +1,7 @@
 Package: PeakSegDisk
 Type: Package
 Title: Disk-Based Constrained Change-Point Detection
-Version: 2019.9.10
+Version: 2019.9.27
 Author: Toby Dylan Hocking
 Maintainer: Toby Dylan Hocking <toby.hocking@r-project.org>
 Description: Disk-based implementation of
@@ -17,6 +17,6 @@ VignetteBuilder: knitr
 URL: http://github.com/tdhock/PeakSegDisk
 BugReports: http://github.com/tdhock/PeakSegDisk/issues
 NeedsCompilation: yes
-Packaged: 2019-09-10 23:06:34 UTC; th798
+Packaged: 2019-11-18 21:41:58 UTC; th798
 Repository: CRAN
-Date/Publication: 2019-09-11 04:10:03 UTC
+Date/Publication: 2019-11-18 23:10:02 UTC
