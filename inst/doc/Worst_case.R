@@ -40,7 +40,6 @@ for(penalty in c(0, 1e2, 1e4, 1e6)){
   short.type="theoretical"))
 
 ## ---- fig.height=3--------------------------------------------------------------------------------
-library(ggplot2)
 one <- function(short.type, data.type, color){
   data.table(short.type, data.type, color)
 }
@@ -51,6 +50,7 @@ type.dt <- rbind(
 loss.types <- type.dt[loss, on=list(short.type)]
 worst.types <- type.dt[worst.dt, on=list(short.type)]
 (type.colors <- type.dt[, structure(color, names=data.type)])
+if(require(ggplot2)){
 ggplot()+
   guides(
     color=guide_legend(keyheight=3)
@@ -72,4 +72,5 @@ ggplot()+
     data=loss.types)+
   scale_x_log10("N data")+
   scale_y_log10("Mean intervals (candidate changepoints)")
+}
 

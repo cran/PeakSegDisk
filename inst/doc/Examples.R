@@ -23,7 +23,7 @@ count.df <- data.frame(
   chromStart=0:(length(z.rep.vec)-1),
   chromEnd=1:length(z.rep.vec),
   count=z.rep.vec)
-library(ggplot2)
+if(require(ggplot2)){
 gg.count <- ggplot()+
   xlab("position")+
   geom_point(aes(
@@ -31,6 +31,7 @@ gg.count <- ggplot()+
     shape=1,
     data=count.df)
 gg.count
+}
 
 ## -----------------------------------------------------------------------------
 n.segs <- length(seg.mean.vec)
@@ -39,6 +40,7 @@ seg.end.vec <- cumsum(seg.size.vec)
 change.vec <- seg.end.vec[-n.segs]+0.5
 change.df <- data.frame(
   changepoint=change.vec)
+if(require(ggplot2)){
 gg.change <- gg.count+
   geom_vline(aes(
     xintercept=changepoint, color=model),
@@ -48,6 +50,7 @@ gg.change <- gg.count+
       simulation="black",
       fitted="green"))
 gg.change
+}
 
 ## -----------------------------------------------------------------------------
 fit <- list()
@@ -73,6 +76,7 @@ rle.df <- data.frame(
   chromStart=c(0L, chromEnd[-length(chromEnd)]),
   chromEnd,
   count=z.rle.vec$values)
+if(require(ggplot2)){
 gg.rle <- ggplot()+
   geom_segment(aes(
     chromStart+0.5, count, xend=chromEnd+0.5, yend=count),
@@ -90,13 +94,16 @@ gg.rle <- ggplot()+
       fitted="green"))+
   xlab("position")
 gg.rle
+}
 
 ## -----------------------------------------------------------------------------
 (fit$rle <- PeakSegDisk::PeakSegFPOP_df(rle.df, 10.5))
+if(require(ggplot2)){
 gg.rle+
   geom_segment(aes(
     chromStart+0.5, mean, xend=chromEnd+0.5, yend=mean, color=model),
     data=data.frame(fit$rle$segments, model="fitted"))
+}
 
 ## -----------------------------------------------------------------------------
 data.dir <- file.path(
@@ -113,7 +120,7 @@ write.table(
 (fit$dir <- PeakSegDisk::PeakSegFPOP_dir(data.dir, 10.5))
 
 ## -----------------------------------------------------------------------------
-if(interactive() && requireNamespace("future"))future::plan("multiprocess")
+if(interactive() && requireNamespace("future"))future::plan("multisession")
 (fit$search <- PeakSegDisk::sequentialSearch_dir(data.dir, 2L, verbose=1))
 
 ## -----------------------------------------------------------------------------

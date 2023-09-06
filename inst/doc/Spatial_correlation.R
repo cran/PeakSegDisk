@@ -60,7 +60,7 @@ aligned.dt[, {
 }, by=list(bases.counted, experiment, chrom)])
 
 ## -------------------------------------------------------------------------------------------------
-library(ggplot2)
+if(require(ggplot2)){
 gg.data <- ggplot()+
   theme_bw()+
   theme(panel.spacing=grid::unit(0, "lines"))+
@@ -78,6 +78,7 @@ gg.data <- ggplot()+
   ))+
   scale_x_continuous("Position on hg19 chrom (kb = kilo bases)")
 print(gg.data)
+}
 
 ## -------------------------------------------------------------------------------------------------
 bin.dt <- seq.dt[, {
@@ -88,17 +89,19 @@ bin.dt <- seq.dt[, {
     mean.count=sum(count*bases)/sum(bases),
     bases=sum(bases)
   )}, by=list(bases.counted, experiment, bin.i)]
+if(require(ggplot2)){
 gg.bins <- gg.data+
   geom_step(aes(
     binStart/1e3, mean.count, color=data.type),
     alpha=0.75,
-    size=1,
+    linewidth=1,
     data=data.table(bin.dt, data.type="bins"))+
   scale_y_log10("Aligned DNA sequence reads (log scale)")
 print(gg.bins)
+}
 
 ## -------------------------------------------------------------------------------------------------
-if(interactive() && requireNamespace("future"))future::plan("multiprocess")
+if(interactive() && requireNamespace("future"))future::plan("multisession")
 segs.dt <- seq.dt[, {
   data.dir <- file.path(tempdir(), bases.counted, experiment)
   dir.create(data.dir, showWarnings=FALSE, recursive=TRUE)
@@ -115,6 +118,7 @@ segs.dt <- seq.dt[, {
 changes.dt <- segs.dt[, {
   .SD[-1]
 }, by=list(bases.counted, experiment, data.type)]
+if(require(ggplot2)){
 gg.model <- gg.bins+
   geom_segment(aes(
     chromStart/1e3, mean,
@@ -126,6 +130,7 @@ gg.model <- gg.bins+
     color=data.type),
     data=changes.dt)
 print(gg.model)
+}
 
 ## ---- fig.width=10--------------------------------------------------------------------------------
 peaks.dt <- segs.dt[status=="peak"]
@@ -146,6 +151,7 @@ diff.y <- bases.max.dt[
   diff.panel, max.count, on=list(bases.counted)]
 diff.y <- Inf
 diff.vjust <- 1.1
+if(require(ggplot2)){
 gg.model+
   geom_text(aes(
     chromStart/1e3, read.size.y, label=sprintf(
@@ -175,4 +181,5 @@ gg.model+
     data.type="model",
     bases.counted=diff.panel,
     experiments["H3K36me3", on=list(experiment)]))
+}
 
