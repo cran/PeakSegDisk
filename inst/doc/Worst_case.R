@@ -39,7 +39,7 @@ for(penalty in c(0, 1e2, 1e4, 1e6)){
   mean.intervals=(N.data.vec+1)/2,
   short.type="theoretical"))
 
-## ---- fig.height=3--------------------------------------------------------------------------------
+## ----fig.height=3---------------------------------------------------------------------------------
 one <- function(short.type, data.type, color){
   data.table(short.type, data.type, color)
 }
